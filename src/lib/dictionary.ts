@@ -55,7 +55,7 @@ export const dictionary = [
     },
   },
   {
-    id: 3,
+    id: 2,
     language: "Australian Aboriginal Bunuba",
     translation: {
       fire: "winthali",
@@ -75,7 +75,7 @@ export const dictionary = [
     },
   },
   {
-    id: 4,
+    id: 3,
     language: "Australian Aboriginal Walmajarri",
     translation: {
       bushfire: "kuwarn",
@@ -91,29 +91,6 @@ export const dictionary = [
       now: "jalarrarni",
       today: "jalarra",
       tomorrow: "kumanta",
-      danger: "ramul",
-      "look out": "yirrawu",
-      roads: "warntarri",
-      closed: "numkujirnu",
-    },
-  },
-  {
-    id: 5,
-    language: "Australian Aboriginal Gija",
-    translation: {
-      fire: "marnem",
-      rain: "jadany",
-      storm: "marrji",
-      wind: "waloorrji",
-      "hurry up": "pilpungu",
-      escape: "turtangkarrakangu",
-      wait: "jarranyangu",
-      stay: "kirrarnu",
-      inside: "munku",
-      house: "mayaru",
-      now: "jalarrarni",
-      today: "gelyengen",
-      tomorrow: "nyigawa",
       danger: "ramul",
       "look out": "yirrawu",
       roads: "warntarri",

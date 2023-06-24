@@ -84,10 +84,6 @@ const LanguageForm = () => {
               <option value="Australian Aboriginal Kriol">Australian Aboriginal Kriol</option>
               <option value="Australian Aboriginal Bunuba">Australian Aboriginal Bunuba</option>
               <option value="Australian Aboriginal Walmajarri">Australian Aboriginal Walmajarri</option>
-              <option value="Australian Aboriginal Kaurna">Australian Aboriginal Kaurna</option>
-              <option value="Australian Aboriginal Kukatja">
-                Australian Aboriginal Kukatja
-              </option>
               {/* Add more language options here */}
             </select>
           </div>
