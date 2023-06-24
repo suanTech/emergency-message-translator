@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Configuration, OpenAIApi } from "openai";
-import art from "../public/images/aboriginal-art.png";
+import art from "./assets/aboriginal-art.png";
 import {dictionary} from "./lib/dictionary.ts";
 
 const LanguageForm = () => {
@@ -12,8 +12,8 @@ const LanguageForm = () => {
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const config = new Configuration({
-    apiKey: process.env.API_KEY,
+    const config = new Configuration({
+    apiKey: `${process.env.API_KEY}`,
   });
   const openai = new OpenAIApi(config);
   const handleInputChange = (
