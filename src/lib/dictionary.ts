@@ -25,7 +25,7 @@ export const dictionary = [
   },
   {
     id: 1,
-    language: "Australian Aboriginal kriol",
+    language: "Australian Aboriginal Kriol",
     translation: {
       fire: "faiya",
       bush: "buj",
