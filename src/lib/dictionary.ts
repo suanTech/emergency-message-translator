@@ -44,6 +44,9 @@ export const dictionary = [
       danger: "deinja",
       life: "laif",
       "look out": "lukat",
+      and: "en",
+      keep: "gibim",
+      road: "rod",
     },
   },
   {
