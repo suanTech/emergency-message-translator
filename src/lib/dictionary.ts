@@ -47,6 +47,7 @@ export const dictionary = [
       and: "en",
       keep: "gibim",
       road: "rod",
+      
     },
   },
   {
