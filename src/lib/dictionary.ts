@@ -21,10 +21,6 @@ export const dictionary = [
       danger: "aliwa",
       life: "laif",
       "look out": "uliwa",
-      roads: "",
-      closed: "",
-      "do not": "",
-      drive: "",
     },
   },
   {
@@ -48,10 +44,6 @@ export const dictionary = [
       danger: "deinja",
       life: "laif",
       "look out": "lukat",
-      roads: "",
-      closed: "",
-      "do not": "",
-      drive: "",
     },
   },
   {

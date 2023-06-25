@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import "./App.css";
 import { Configuration, OpenAIApi } from "openai";
 import art from "./assets/aboriginal-art.png";
-import {dictionary} from "./lib/dictionary.ts";
+import { dictionary } from "./lib/dictionary.ts";
 
+const initialData = {
+  message: "",
+  language: "",
+};
 const LanguageForm = () => {
-  const [formData, setFormData] = useState({
-    message: "",
-    language: "",
-  });
+  const [formData, setFormData] = useState(initialData);
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-    const config = new Configuration({
-    apiKey: `${process.env.API_KEY}`,
+  const [isLoading, setIsLoading] = useState(false);
+  const config = new Configuration({
+    apiKey: import.meta.env.VITE_API_KEY,
   });
   const openai = new OpenAIApi(config);
   const handleInputChange = (
@@ -30,12 +32,20 @@ const LanguageForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsModalOpen(true);
+    setIsLoading(true);
     const langName = formData.language;
-    const language = dictionary.find(el => el.language === langName);
+    const language = dictionary.find((el) => el.language === langName);
     const prompt = `
-    Translate the following phrase into ${formData.language}: "${formData.message}" \n,based on this dictionary:${JSON.stringify(language?.translation)}. \nOnly include the text of the translation in your output.
+    \n Translate the following phrase into ${formData.language}: "${
+      formData.message
+    }"
+    \n Use the dictionary below as a reference, but if a translation is not found, please use your own resources to translate for each word.
+    \n${JSON.stringify(
+      language?.translation
+    )}
+    \n Only include the text of the translation in your output.
     `;
-    console.log(prompt)
+    console.log(prompt);
     try {
       const res = await openai.createCompletion({
         model: "text-davinci-003",
@@ -51,6 +61,9 @@ const LanguageForm = () => {
       setIsCopied(false);
     } catch (err) {
       console.error("Something is wrong while fetching data");
+    } finally {
+      setIsLoading(false);
+      setFormData(initialData);
     }
   };
   const handleCopy = (e: React.MouseEvent): void => {
@@ -61,7 +74,7 @@ const LanguageForm = () => {
     }
     setTimeout(() => {
       setIsCopied(false);
-    }, 2000)
+    }, 2000);
   };
 
   return (
@@ -69,7 +82,7 @@ const LanguageForm = () => {
       <div className="appContainer">
         <form onSubmit={handleSubmit}>
           <img src={art} alt="aboriginal art" id="art" />
-          <h2>Emergency Warning Translator</h2>
+          <h1>Emergency Warning Translator</h1>
           <div className="inputContainer">
             <label htmlFor="language">Select a language</label>
             <select
@@ -80,10 +93,18 @@ const LanguageForm = () => {
               required
             >
               <option value="">Select</option>
-              <option value="Australian Aboriginal Noongar">Australian Aboriginal Noongar</option>
-              <option value="Australian Aboriginal Kriol">Australian Aboriginal Kriol</option>
-              <option value="Australian Aboriginal Bunuba">Australian Aboriginal Bunuba</option>
-              <option value="Australian Aboriginal Walmajarri">Australian Aboriginal Walmajarri</option>
+              <option value="Australian Aboriginal Noongar">
+                Australian Aboriginal Noongar
+              </option>
+              <option value="Australian Aboriginal Kriol">
+                Australian Aboriginal Kriol
+              </option>
+              <option value="Australian Aboriginal Bunuba">
+                Australian Aboriginal Bunuba
+              </option>
+              <option value="Australian Aboriginal Walmajarri">
+                Australian Aboriginal Walmajarri
+              </option>
               {/* Add more language options here */}
             </select>
           </div>
@@ -105,8 +126,18 @@ const LanguageForm = () => {
       {isModalOpen ? (
         <div className="modalContainer">
           <div className="outputWrapper modal">
-            <button className="closeBtn" onClick={() => setIsModalOpen(false)}>X</button>
-            <h1>{output}</h1>
+            <button className="closeBtn" onClick={() => setIsModalOpen(false)}>
+              X
+            </button>
+            <div className="output">
+              {isLoading ? (
+                "loading..."
+              ) : output.split(" ").length > 50 ? (
+                <h3>{output}</h3>
+              ) : (
+                <h2>{output}</h2>
+              )}
+            </div>
             <button className="copyBtn" onClick={handleCopy}>
               <span>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
             </button>

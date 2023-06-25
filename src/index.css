@@ -34,19 +34,17 @@ body {
   min-width: 320px;
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 1rem 0;
+  background-color: #3C7F72;
 }
 h1 {
-  text-align: center;
-  font-size: 1.7rem;
-}
-h2 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #D2400B;
   margin: 0;
+  margin-bottom: 1rem;
 }
-select, textarea {
-  background-color: #ffffff;
+h2 {
+  text-align: center;
+  font-size: 1.7rem;
 }
 select:focus,
 select:active,
@@ -54,7 +52,7 @@ textarea:focus,
 textarea:active {
   outline: inset 2px solid #FFAF00;
 }
-select, textarea, button, input {
+button {
   border: 1px solid rgb(48, 99, 56);
   border-radius: 10px;
 }
@@ -63,16 +61,16 @@ button {
   width: fit-content;
   height: fit-content;
 }
-select, input {
+select {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   font-size: 1rem;
 }
 textarea {
   width: 100%;
   font-size: 1.2rem;
   min-height: 100px;
-  padding: 1rem 1rem;
+  padding: 1rem;
 }
 
 
